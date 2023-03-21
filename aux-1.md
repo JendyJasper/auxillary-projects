@@ -49,4 +49,7 @@ kmaSGj362OnCCNAAAACWRhcmVARGFyZQE=
 - change directory back to Shell: ```cd Shell```
 - create the csv file and add names to it, one per line
 ![image](https://user-images.githubusercontent.com/29708657/226628804-4c286e1e-79b9-4c45-9474-70a93f882d20.png)
+
+- add the 'developers' group: ```sudo groupadd developers```
+- make theshell script an executable file: ```sudo chmod +x onboarding-users.sh```
  
