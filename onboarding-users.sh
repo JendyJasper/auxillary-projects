@@ -49,7 +49,7 @@ PASSWORD=password
         echo
 
 # We need to create and set public key for users in the server
-        cp -R "/root/onboard/id_rsa.pub" "/home/$user/.ssh/authorized_keys"
+        cp -R "/home/ubuntu/Shell/.ssh/id_rsa.pub" "/home/$user/.ssh/authorized_keys"
         echo "Copyied the Public Key to New User Account on the server"
         echo
         echo
