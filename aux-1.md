@@ -52,4 +52,22 @@ kmaSGj362OnCCNAAAACWRhcmVARGFyZQE=
 
 - add the 'developers' group: ```sudo groupadd developers```
 - make theshell script an executable file: ```sudo chmod +x onboarding-users.sh```
- 
+- run the ```onboarding-users.sh``` shell script with normal user account, it should say "Only Admin Can Onboard A User"
+- now run the command ```sudo su``` to switch to root privililedge
+- <img width="980" alt="image" src="https://user-images.githubusercontent.com/29708657/227105134-0b9605ad-4fad-42a7-a9f5-5e9475bc8400.png">
+- run the ```onboarding-users.sh``` shell script again and it will onboard the users and carry out all neccessary tasks
+- <img width="1440" alt="image" src="https://user-images.githubusercontent.com/29708657/227107986-8aba1833-d308-498d-a478-e17055041bfc.png">
+- run the command ```ls -l /home/``` to confirm the creation of all the users
+ - <img width="1440" alt="image" src="https://user-images.githubusercontent.com/29708657/227108239-81eb701d-735e-42bf-b304-097c1999ac8a.png">
+- open another terminal on your local machine and create a pem file using the private key above: ```vi aux-proj.pem```
+- connect to one one of the users onboarded above: ```ssh -i aux-proj.pem Burnaboy@<public IP address>```
+- it will return with a permision denied error as shown below. This happens because the private key has so many permissions. 
+- ![image](https://user-images.githubusercontent.com/29708657/227110795-f7a1b1e3-6a47-4a57-86bf-895d7a217b65.png)
+- change the mode to a different permission: ```sudo chmod 600 aux-proj.pem``` and try to connect again using ```ssh -i aux-proj.pem Burnaboy@<public IP address>```
+- <img width="1440" alt="image" src="https://user-images.githubusercontent.com/29708657/227112308-f6c988f3-0787-4cdc-979e-29b984d82783.png">
+- It successfully connects now. Check to confirm you didn't add the user to the sudoers file which allows it to run sudo commands: ```sudo apt update```. It should decline the command telling you that Burnaboy is not in the sudoers file.
+- run ```ls -la``` to confirm the .ssh folder exists. Also run ```ls -la .ssh/``` to confirm the authrized_keys folder exist. run ```cat .ssh/authorized_keys``` to see if the public key was copied.
+- <img width="1440" alt="image" src="https://user-images.githubusercontent.com/29708657/227113146-34ce7d8e-2fff-4aea-b286-e67f2750e7dd.png">
+
+
+
